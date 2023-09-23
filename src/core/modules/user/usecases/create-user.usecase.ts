@@ -1,17 +1,12 @@
-import type { IUseCase } from '@/core/shared'
+import type { CreateUserProps, IUseCase } from '@/core/shared'
 
+import type { UserModel } from '../model'
 import type { IUserRepository } from '../repositories'
 
-type CreateUserProps = {
-  name: string
-  email: string
-  password: string
-}
-
-export class CreateUserUseCase implements IUseCase<CreateUserProps, void> {
+export class CreateUserUseCase implements IUseCase<CreateUserProps, UserModel> {
   constructor(private readonly repository: IUserRepository) {}
 
-  async execute(input: CreateUserProps): Promise<void> {
+  async execute(input: CreateUserProps) {
     const { name, email, password } = input
 
     const retrieveUser = await this.repository.findByEmail(email)
@@ -20,6 +15,6 @@ export class CreateUserUseCase implements IUseCase<CreateUserProps, void> {
       throw new Error('user is already registered')
     }
 
-    await this.repository.create({ name, email, password })
+    return this.repository.create({ name, email, password })
   }
 }

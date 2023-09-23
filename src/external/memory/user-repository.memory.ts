@@ -13,7 +13,11 @@ export class UserRepositoryMemory implements IUserRepository {
   }
 
   async create(user: UserModel): Promise<UserModel> {
-    this.users.push({ ...user, id: Math.random() })
+    const id = Math.floor(Math.random() * 100)
+
+    Object.assign(user, { id })
+
+    this.users.push(user)
 
     return user
   }

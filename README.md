@@ -22,3 +22,6 @@ Open http://localhost:3000/ with your browser to see the result.
 > bunx prisma migrate dev --name migration-name --schema=./src/external/prisma/schema.prisma
 
 > yarn prisma studio --schema=./src/external/prisma/schema.prisma
+
+## Tests
+[Rejects tests issue](https://github.com/oven-sh/bun/issues/4755)
