@@ -9,3 +9,8 @@ Content-Type: application/json
   "email": "johh@example.com",
   "password": "123456"
 }
+
+###
+
+# @name list_users
+GET {{baseUrl}}/users

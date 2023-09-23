@@ -9,6 +9,7 @@
     "ncu": "npx npm-check-updates -i --dep=prod,dev --format group"
   },
   "dependencies": {
+    "@prisma/client": "5.3.1",
     "elysia": "latest"
   },
   "devDependencies": {
@@ -21,6 +22,9 @@
   "eslintConfig": {
     "extends": [
       "@lipex360-ui/eslint-config"
-    ]
+    ],
+    "rules": {
+      "no-new": "off"
+    }
   }
 }

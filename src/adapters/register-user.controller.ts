@@ -1,9 +1,9 @@
 import type Elysia from 'elysia'
 
-import type { RegisterUserService } from '@/core/user/service'
+import type { RegisterUserUseCase } from '@/core/user/usecases'
 
 export class RegisterUserController {
-  constructor(readonly server: Elysia, readonly useCase: RegisterUserService) {
+  constructor(readonly server: Elysia, readonly useCase: RegisterUserUseCase) {
     server.post('/users', async ({ body }) => {
       const { name, email, password } = body as any
 

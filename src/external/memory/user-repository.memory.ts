@@ -1,7 +1,7 @@
 import type { User } from '@/core/user/model'
 import type { IUserRepository } from '@/core/user/repositories'
 
-export class InMemoryUserRepository implements IUserRepository {
+export class UserRepositoryMemory implements IUserRepository {
   private readonly users: User[] = []
 
   async retrieveByEmail(email: string): Promise<User | null> {
@@ -12,5 +12,9 @@ export class InMemoryUserRepository implements IUserRepository {
     this.users.push({ ...user, id: Math.random() })
 
     return user
+  }
+
+  async findAll(): Promise<User[] | []> {
+    return this.users
   }
 }

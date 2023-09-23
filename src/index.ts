@@ -1,17 +1,18 @@
 import { Elysia } from 'elysia'
 
-import { RegisterUserController } from './adapters'
-import { RegisterUserService } from './core/user/service'
-import { InMemoryUserRepository } from './external/memory/user-repository.memory'
+import { ListUsersController, RegisterUserController } from './adapters'
+import { ListUsersUseCase, RegisterUserUseCase } from './core/user/usecases'
+import { UserRepositoryPrisma } from './external/prisma'
 
 const app = new Elysia()
 
-const userRepository = new InMemoryUserRepository()
+const userRepository = new UserRepositoryPrisma()
 
-const createUser = new RegisterUserService(userRepository)
+const createUserUseCase = new RegisterUserUseCase(userRepository)
+const listUsersUseCase = new ListUsersUseCase(userRepository)
 
-// eslint-disable-next-line no-new
-new RegisterUserController(app, createUser)
+new RegisterUserController(app, createUserUseCase)
+new ListUsersController(app, listUsersUseCase)
 
 app.listen(3000)
 
