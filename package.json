@@ -3,13 +3,24 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "npx eslint . --ext .ts,.tsx --fix",
+    "ncu": "npx npm-check-updates -i --dep=prod,dev --format group"
   },
   "dependencies": {
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@lipex360-ui/eslint-config": "^1.0.12",
+    "bun-types": "latest",
+    "eslint": "^8.50.0",
+    "prisma": "^5.3.1"
   },
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "eslintConfig": {
+    "extends": [
+      "@lipex360-ui/eslint-config"
+    ]
+  }
 }
