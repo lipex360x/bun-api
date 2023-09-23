@@ -1,20 +1,24 @@
-import type { User } from '@/core/user/model'
+import type { UserModel } from '@/core/user/model'
 import type { IUserRepository } from '@/core/user/repositories'
 
 export class UserRepositoryMemory implements IUserRepository {
-  private readonly users: User[] = []
+  private readonly users: UserModel[] = []
 
-  async retrieveByEmail(email: string): Promise<User | null> {
+  async findByEmail(email: string): Promise<UserModel | null> {
     return this.users.find((user) => user.email === email) ?? null
   }
 
-  async create(user: User): Promise<User> {
+  async findById(id: number): Promise<UserModel | null> {
+    return this.users.find((user) => user.id === id) ?? null
+  }
+
+  async create(user: UserModel): Promise<UserModel> {
     this.users.push({ ...user, id: Math.random() })
 
     return user
   }
 
-  async findAll(): Promise<User[] | []> {
+  async findAll(): Promise<UserModel[] | []> {
     return this.users
   }
 }

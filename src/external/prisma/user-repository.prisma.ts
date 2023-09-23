@@ -1,4 +1,4 @@
-import type { User } from '@/core/user/model'
+import type { UserModel } from '@/core/user/model'
 import type { IUserRepository } from '@/core/user/repositories'
 import { PrismaClient } from '@prisma/client'
 
@@ -9,7 +9,7 @@ export class UserRepositoryPrisma implements IUserRepository {
     this.prisma = new PrismaClient()
   }
 
-  async retrieveByEmail(email: string) {
+  async findByEmail(email: string) {
     return this.prisma.user.findUnique({
       where: {
         email,
@@ -17,11 +17,19 @@ export class UserRepositoryPrisma implements IUserRepository {
     })
   }
 
-  async create(user: User) {
+  async findById(id: number) {
+    return this.prisma.user.findUnique({
+      where: {
+        id,
+      },
+    })
+  }
+
+  async create(user: UserModel) {
     return this.prisma.user.create({ data: user })
   }
 
-  async findAll(): Promise<User[] | []> {
+  async findAll(): Promise<UserModel[] | []> {
     return this.prisma.user.findMany()
   }
 }

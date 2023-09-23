@@ -1,7 +1,8 @@
-import type { User } from '../model'
+import type { UserModel } from '../model'
 
 export interface IUserRepository {
-  create(user: User): Promise<User>
-  retrieveByEmail(email: string): Promise<User | null>
-  findAll(): Promise<User[] | []>
+  create(user: UserModel): Promise<UserModel>
+  findAll(): Promise<UserModel[] | []>
+  findByEmail(email: string): Promise<UserModel | null>
+  findById(id: number): Promise<UserModel | null>
 }
