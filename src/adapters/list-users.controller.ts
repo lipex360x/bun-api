@@ -1,6 +1,6 @@
 import type Elysia from 'elysia'
 
-import type { ListUsersUseCase } from '@/core/user/usecases'
+import type { ListUsersUseCase } from '@/core/modules/user/usecases'
 
 export class ListUsersController {
   constructor(readonly server: Elysia, readonly useCase: ListUsersUseCase) {

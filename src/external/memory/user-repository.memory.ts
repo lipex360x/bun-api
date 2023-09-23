@@ -1,5 +1,5 @@
-import type { UserModel } from '@/core/user/model'
-import type { IUserRepository } from '@/core/user/repositories'
+import type { UserModel } from '@/core/modules/user/model'
+import type { IUserRepository } from '@/core/modules/user/repositories'
 
 export class UserRepositoryMemory implements IUserRepository {
   private readonly users: UserModel[] = []

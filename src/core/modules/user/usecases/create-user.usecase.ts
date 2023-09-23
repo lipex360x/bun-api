@@ -8,7 +8,7 @@ type CreateUserProps = {
   password: string
 }
 
-export class RegisterUserUseCase implements IUseCase<CreateUserProps, void> {
+export class CreateUserUseCase implements IUseCase<CreateUserProps, void> {
   constructor(private readonly repository: IUserRepository) {}
 
   async execute(input: CreateUserProps): Promise<void> {

@@ -1,5 +1,5 @@
-import type { UserModel } from '@/core/user/model'
-import type { IUserRepository } from '@/core/user/repositories'
+import type { UserModel } from '@/core/modules/user/model'
+import type { IUserRepository } from '@/core/modules/user/repositories'
 import { PrismaClient } from '@prisma/client'
 
 export class UserRepositoryPrisma implements IUserRepository {

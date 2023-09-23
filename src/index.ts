@@ -1,23 +1,23 @@
 import {
   ListUsersController,
-  RegisterUserController,
+  CreateUserController,
   RetrieveUserController,
 } from './adapters'
 import {
   ListUsersUseCase,
-  RegisterUserUseCase,
+  CreateUserUseCase,
   RetrieveUserUseCase,
-} from './core/user/usecases'
+} from './core/modules/user/usecases'
 import { app } from './external/api'
 import { UserRepositoryPrisma } from './external/prisma'
 
 const userRepository = new UserRepositoryPrisma()
 
-const createUserUseCase = new RegisterUserUseCase(userRepository)
+const createUserUseCase = new CreateUserUseCase(userRepository)
 const listUsersUseCase = new ListUsersUseCase(userRepository)
 const retrieveUserUseCase = new RetrieveUserUseCase(userRepository)
 
-new RegisterUserController(app, createUserUseCase)
+new CreateUserController(app, createUserUseCase)
 new ListUsersController(app, listUsersUseCase)
 new RetrieveUserController(app, retrieveUserUseCase)
 
